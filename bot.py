@@ -8,6 +8,7 @@ from datetime import datetime
 from io import BytesIO
 from serverContext import betaTest, titsConfig, ServerContext
 import os
+import pytz as pytz
 
 ####################
 # Obtain bot token from Discord Developer Site
@@ -23,7 +24,8 @@ channelConfiguration: ServerContext = titsConfig
 intents = discord.Intents.default()
 intents.members = True
 bot = commands.Bot(command_prefix='!', intents=intents)
-
+est = pytz.timezone('US/Eastern')
+videoExtensions: List[str] = ["mov", "mp4", "gif"]
 PURE_TEXT = 0
 IMAGE_EMBED = 1
 VIDEO_EMBED = 2
@@ -50,7 +52,7 @@ async def generic_conf(ctx: Context, channel_dest_id: int, message: str):
             channel = bot.get_channel(channel_dest_id)
 
             # datetime object containing current date and time
-            now = datetime.now()
+            now = datetime.now().astimezone(est)
             currentTime = now.strftime("%d/%m %H:%M")
 
             # Create embed message (looks better)
@@ -71,7 +73,7 @@ async def generic_conf(ctx: Context, channel_dest_id: int, message: str):
                 # print("got attachement: %s" % file)
                 fp = BytesIO()
                 await file.save(fp)
-                if file.filename[-3:] == "mp4":
+                if file.filename[-3:]in videoExtensions:
                     post_type = VIDEO_EMBED
                     videos.append([file, fp])
                 else:
