@@ -1,5 +1,5 @@
-# HuskyBot
-A Discord bot for the Northeastern '24 server. 
+# ConfessionsBot
+A modified Discord confessions bot 
 
 ## Features
 
@@ -7,22 +7,6 @@ A Discord bot for the Northeastern '24 server.
 * User verification (outside members who DM the bot will fail)
 * Picture support (upload the image onto Discord)
 * Embed styling (includes text, picture, and time/date)
-
-## Screenshots
-
-**Example Private Message**
-
-![Private Message the Bot](pictures/botPM.png)
-
-
-**Example Output**
-
-![Output](pictures/botOutput.png)
-
-
-**Example Failed Message**
-
-![Failed Message](pictures/botVerification.png)
 
 ## Running
     # For the host:
@@ -33,8 +17,9 @@ A Discord bot for the Northeastern '24 server.
     (Attach a picture using Discord's upload system)
 
 ## Things the User Must Do
-Before running the bot, add the following 2 IDs in the bot.py file (at the top):
+Before running the bot, add the following 4 IDs in the bot.py file (at the top):
 * Guild/Server ID (int)
+* Log ID (int)
 * Channel ID (int)
 * Bot Token ID (string)
 
